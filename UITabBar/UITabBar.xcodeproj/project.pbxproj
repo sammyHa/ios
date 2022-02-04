@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		11DAB3102797A69000AA086B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DAB30F2797A69000AA086B /* AppDelegate.swift */; };
 		11DAB3122797A69000AA086B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DAB3112797A69000AA086B /* SceneDelegate.swift */; };
-		11DAB3142797A69000AA086B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DAB3132797A69000AA086B /* ViewController.swift */; };
 		11DAB3172797A69000AA086B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11DAB3152797A69000AA086B /* Main.storyboard */; };
 		11DAB3192797A69200AA086B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11DAB3182797A69200AA086B /* Assets.xcassets */; };
 		11DAB31C2797A69200AA086B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11DAB31A2797A69200AA086B /* LaunchScreen.storyboard */; };
@@ -23,13 +22,14 @@
 		11DAB33D279C3E5F00AA086B /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DAB33C279C3E5F00AA086B /* CollectionViewController.swift */; };
 		11DAB33F279C51E200AA086B /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DAB33E279C51E200AA086B /* ItemCollectionViewCell.swift */; };
 		11DAB342279C591B00AA086B /* Stocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DAB341279C591B00AA086B /* Stocks.swift */; };
+		11DEFE8827A50003008A7095 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11DEFE8727A50003008A7095 /* GoogleService-Info.plist */; };
+		514E90A5EA83250200806C9D /* Pods_UITabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D179E069CD41D7450620C20F /* Pods_UITabBar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		11DAB30C2797A69000AA086B /* UITabBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UITabBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11DAB30F2797A69000AA086B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11DAB3112797A69000AA086B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		11DAB3132797A69000AA086B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		11DAB3162797A69000AA086B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11DAB3182797A69200AA086B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11DAB31B2797A69200AA086B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,6 +45,10 @@
 		11DAB33C279C3E5F00AA086B /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		11DAB33E279C51E200AA086B /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		11DAB341279C591B00AA086B /* Stocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stocks.swift; sourceTree = "<group>"; };
+		11DEFE8727A50003008A7095 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		887C1B6C1B92B2BE37BD8D12 /* Pods-UITabBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITabBar.release.xcconfig"; path = "Target Support Files/Pods-UITabBar/Pods-UITabBar.release.xcconfig"; sourceTree = "<group>"; };
+		D179E069CD41D7450620C20F /* Pods_UITabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UITabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAA382958EA356A1EF40892F /* Pods-UITabBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITabBar.debug.xcconfig"; path = "Target Support Files/Pods-UITabBar/Pods-UITabBar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				514E90A5EA83250200806C9D /* Pods_UITabBar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +68,8 @@
 			children = (
 				11DAB30E2797A69000AA086B /* UITabBar */,
 				11DAB30D2797A69000AA086B /* Products */,
+				A3A15CAF3E4D57EB0FD5D1BB /* Pods */,
+				8258F6B1ADC3A838F79F367F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,12 +92,12 @@
 				11DAB32327985EB100AA086B /* Storyboards */,
 				11DAB30F2797A69000AA086B /* AppDelegate.swift */,
 				11DAB3112797A69000AA086B /* SceneDelegate.swift */,
-				11DAB3132797A69000AA086B /* ViewController.swift */,
 				11DAB3152797A69000AA086B /* Main.storyboard */,
 				11DAB3182797A69200AA086B /* Assets.xcassets */,
 				11DAB31A2797A69200AA086B /* LaunchScreen.storyboard */,
 				11DAB31D2797A69200AA086B /* Info.plist */,
 				11DAB33C279C3E5F00AA086B /* CollectionViewController.swift */,
+				11DEFE8727A50003008A7095 /* GoogleService-Info.plist */,
 			);
 			path = UITabBar;
 			sourceTree = "<group>";
@@ -139,6 +146,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8258F6B1ADC3A838F79F367F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D179E069CD41D7450620C20F /* Pods_UITabBar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3A15CAF3E4D57EB0FD5D1BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAA382958EA356A1EF40892F /* Pods-UITabBar.debug.xcconfig */,
+				887C1B6C1B92B2BE37BD8D12 /* Pods-UITabBar.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,17 +170,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11DAB3202797A69200AA086B /* Build configuration list for PBXNativeTarget "UITabBar" */;
 			buildPhases = (
+				5868411B63A19212A33A32F8 /* [CP] Check Pods Manifest.lock */,
 				11DAB3082797A69000AA086B /* Sources */,
 				11DAB3092797A69000AA086B /* Frameworks */,
 				11DAB30A2797A69000AA086B /* Resources */,
+				BDC008CE0671FFFC5EC2AB44 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = UITabBar;
-			packageProductDependencies = (
-			);
 			productName = UITabBar;
 			productReference = 11DAB30C2797A69000AA086B /* UITabBar.app */;
 			productType = "com.apple.product-type.application";
@@ -188,6 +212,7 @@
 			packageReferences = (
 				11DAB335279AE70D00AA086B /* XCRemoteSwiftPackageReference "CalendarKit" */,
 				11DAB338279AF2C000AA086B /* XCRemoteSwiftPackageReference "HorizontalCalendar" */,
+				11DEFE8927A502C7008A7095 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 11DAB30D2797A69000AA086B /* Products */;
 			projectDirPath = "";
@@ -204,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11DAB31C2797A69200AA086B /* LaunchScreen.storyboard in Resources */,
+				11DEFE8827A50003008A7095 /* GoogleService-Info.plist in Resources */,
 				11DAB3192797A69200AA086B /* Assets.xcassets in Resources */,
 				11DAB32527985ED000AA086B /* HomeStoryboard.storyboard in Resources */,
 				11DAB32B27985F2000AA086B /* ChartStoryboard.storyboard in Resources */,
@@ -215,12 +241,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5868411B63A19212A33A32F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UITabBar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDC008CE0671FFFC5EC2AB44 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UITabBar/Pods-UITabBar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UITabBar/Pods-UITabBar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UITabBar/Pods-UITabBar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		11DAB3082797A69000AA086B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11DAB3142797A69000AA086B /* ViewController.swift in Sources */,
 				11DAB3102797A69000AA086B /* AppDelegate.swift in Sources */,
 				11DAB32E27987A5800AA086B /* AddViewController.swift in Sources */,
 				11DAB3342799E90D00AA086B /* GraphViewController.swift in Sources */,
@@ -372,6 +439,7 @@
 		};
 		11DAB3212797A69200AA086B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAA382958EA356A1EF40892F /* Pods-UITabBar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -403,6 +471,7 @@
 		};
 		11DAB3222797A69200AA086B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 887C1B6C1B92B2BE37BD8D12 /* Pods-UITabBar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -470,6 +539,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.0.1;
+			};
+		};
+		11DEFE8927A502C7008A7095 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

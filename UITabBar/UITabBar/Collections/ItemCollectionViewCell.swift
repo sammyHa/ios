@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class ItemCollectionViewCell: UICollectionViewCell {
     static let identifier = "ItemCollectionViewCell"
@@ -14,35 +15,23 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var totalPandLLabel: UILabel!
+   
+    let db = Firestore.firestore()
+    var ref: DocumentReference? = nil
     
     
     func setup(with stock: Stocks) {
-        
         tickerLabel.text = stock.ticker
-        priceLabel.text = stock.price
+        tickerLabel.textColor = .lightGray
+        priceLabel.text = String("$\(stock.averagePrice)")
+        priceLabel.textColor = .lightGray
 //        totalLabel.text = stock.profitText
-        totalPandLLabel.text = stock.profit
+        totalPandLLabel.text = String("$\(stock.profit)")
+        if stock.profit.isLess(than: 0.0) {
+            totalPandLLabel.textColor = UIColor.red
+        }
         
     }
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        contentView.addSubview(contentView)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//    }
-//
-//
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//    }
-//
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//    }
-    
-    
+  
 }
