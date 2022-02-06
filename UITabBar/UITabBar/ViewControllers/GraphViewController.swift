@@ -11,155 +11,112 @@ import TinyConstraints
 import Pods_UITabBar
 import FirebaseFirestore
 
-enum WeekDayName: String {
-    case Sunday = "Sun"
-    case Monday = "Mon"
-    case Tuesday = "Tue"
-    case Wednesday = "Wed"
-    case Thursday = "Thu"
-    case Friday = "Fri"
-    case Saturday = "Sat"
-
-}
 
 class GraphViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var currentBalancetxt: UILabel!
     @IBOutlet weak var currentValue: UILabel!
     @IBOutlet weak var currentBalancePercentage: UILabel!
-    @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet weak var lineChartView: LineChartView!
     
     let db = Firestore.firestore()
     var ref: DocumentReference? = nil
-  
-    
-    var todayName:String!
-    let week = ["Sun", "Mon", "Tue", "Wed","Thu", "Fri", "Sat"]
-   //    let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-    var staticSteps = [Double]()
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        barChartView?.delegate = self
+        
         calculateTotalPortfolioValue()
-        setChart(dataPoints: week, values: createNewArray())
-//        setup(barChartView: barChartView)
-     
         calculateAverageCost()
+        lineChartView.delegate = self
+        
+        // line chart view
+        setData()
+    }
+    
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        print(entry)
+    }
+    
+    func setData(){
+     
+        let set1 = LineChartDataSet(entries: yValue)
+        
+        set1.drawCirclesEnabled = false
+        set1.mode = .horizontalBezier
+        set1.lineWidth = 5
+        set1.setColor(UIColor(red: 123/255, green: 150/255, blue: 255/255, alpha: 1))
+        set1.fill = Fill(color: .systemBlue)
+        set1.fillAlpha = 0.3
+        set1.drawFilledEnabled = true
+        set1.drawHorizontalHighlightIndicatorEnabled = false
+        set1.highlightColor = .white
+        set1.highlightLineWidth = 1
+        //create line data and pass the set of the  data
+        let data = LineChartData(dataSet: set1)
+        lineChartView.data = data
+        data.setDrawValues(false)
+        
+        lineChartView.rightAxis.enabled = false
+        
+        let yAxis = lineChartView.leftAxis
+        yAxis.labelFont = .boldSystemFont(ofSize: 12)
+        yAxis.labelTextColor = .white
+        yAxis.setLabelCount(6, force: false)
+        yAxis.axisLineColor = .white
+        yAxis.drawGridLinesEnabled = false
+        
+        
+        let xAxis = lineChartView.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.labelFont = .boldSystemFont(ofSize: 12)
+        xAxis.labelTextColor = .white
+        xAxis.drawGridLinesEnabled = false
+        
+        lineChartView.animate(xAxisDuration: 1)
+       // lineChartView.drawGridBackgroundEnabled = false
         
         
     }
+    
+    
+    let yValue: [ChartDataEntry] = [
+        
+        ChartDataEntry(x: 0.0, y: 1000.0),
+        ChartDataEntry(x: 1.0, y: 500.0),
+        ChartDataEntry(x: 2.0, y: 700.0),
+        ChartDataEntry(x: 3.0, y: 900.0),
+        ChartDataEntry(x: 4.0, y: 1000.0),
+        ChartDataEntry(x: 5.0, y: 1200.0),
+        ChartDataEntry(x: 6.0, y: 1500.0)
+//        ChartDataEntry(x: 7.0, y: 800.0),
+//        ChartDataEntry(x: 8.0, y: 1200.0),
+//        ChartDataEntry(x: 9.0, y: 1300.0),
+//        ChartDataEntry(x: 10.0, y: 500.0),
+//        ChartDataEntry(x: 11.0, y: 1700.0),
+//        ChartDataEntry(x: 12.0, y: 800.0),
+//        ChartDataEntry(x: 13.0, y: 200.0),
+//        ChartDataEntry(x: 14.0, y: 500.0),
+//        ChartDataEntry(x: 15.0, y: 700.0),
+//        ChartDataEntry(x: 16.0, y: 500.0),
+//        ChartDataEntry(x: 17.0, y: 900.0),
+//        ChartDataEntry(x: 18.0, y: 800.0),
+//        ChartDataEntry(x: 19.0, y: 700.0),
+//        ChartDataEntry(x: 20.0, y: 500.0),
+//        ChartDataEntry(x: 21.0, y: 200.0),
+//        ChartDataEntry(x: 22.0, y: 400.0)
+    ]
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
     
-    //MARK: Get Current Day Name
-      func getCurrentDayName()-> String {
-      
-          for i in stocks.suffix(7) {
-              let strDate = i.tradeDate
-              print("Date lasst seven \(strDate)")
-             
-              let dateFormatter = DateFormatter()
-              dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-              dateFormatter.dateFormat = "MM/dd/yyyy"
-              let date = dateFormatter.date(from: strDate)
-              
-              let weekday = Calendar.current.component(.weekday, from: date!)
-              
-          switch weekday {
-              case 1:
-                  todayName = WeekDayName.Sunday.rawValue
-              case 2:
-                  todayName = WeekDayName.Monday.rawValue
-              case 3:
-                  todayName = WeekDayName.Tuesday.rawValue
-              case 4:
-                  todayName = WeekDayName.Wednesday.rawValue
-              case 5:
-                  todayName = WeekDayName.Thursday.rawValue
-              case 6:
-                  todayName = WeekDayName.Friday.rawValue
-              case 7:
-                  todayName = WeekDayName.Saturday.rawValue
-              default:
-                  return "Nothing"
-          }
-        }
-          return todayName
-      }
-    
 
     
-    func createNewArray() -> [Double] {
-        
-        var stepsThisWeek = [Double]()
-        
-        for i in stocks {
-            staticSteps.append(i.averagePrice)
-        }
-
-        // use todays day to find the index of where it appears in var week=[String]()
+    
+    func setChart() {
      
-        if let todayIndex = week.firstIndex(of: getCurrentDayName()) {
-
-            // create indices range of 0 to todayIndex
-            let daysSoFarIndices = [Int](0...todayIndex)
-
-            // create new array of var staticSteps=[Int]() at daysSoFarIndices
-            stepsThisWeek = daysSoFarIndices.map { staticSteps[$0]}
-
-            //create indices from todayIndex +1 to lastIndex of var staticSteps=[Int]()
-            let daysLaterInWeek = [Int](todayIndex..<staticSteps.endIndex)
-            //add 0 values for each daysLaterInWeek remaining
-            for _ in daysLaterInWeek {
-                stepsThisWeek.append(0)
-            }
-        }
-        return stepsThisWeek
-    }
-
-    
-    
-    func setChart(dataPoints: [String], values: [Double]) {
-        barChartView.noDataText = "You need to provide data for the chart."
-
-        var dataEntries: [BarChartDataEntry] = []
-     
-
-        for i in 0..<stocks.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
-            dataEntries.append(dataEntry)
-        }
-
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "")
-        chartDataSet.colors = ChartColorTemplates.material()
-        let chartData = BarChartData(dataSet: chartDataSet)
-        barChartView.legend.enabled = false
-        barChartView.data = chartData
-        
-        barChartView.setScaleEnabled(false)
-        barChartView.rightAxis.enabled = false
-        barChartView.xAxis.labelTextColor = .white
-        barChartView.chartDescription?.enabled = false
-        barChartView.drawValueAboveBarEnabled = false
-        
-        //hides grid
-        barChartView.xAxis.drawGridLinesEnabled = false
-        barChartView.xAxis.drawAxisLineEnabled = false
-        barChartView.xAxis.valueFormatter = WeekValueFormatter()
-        
-        let xAxis = barChartView.xAxis
-        xAxis.labelPosition = .bottom
-        xAxis.labelFont = .systemFont(ofSize: 10)
-        xAxis.labelTextColor = .white
-        barChartView.leftAxis.labelTextColor = .white
-        barChartView.leftAxis.spaceTop = 0.15
-        
-        barChartView.animate(yAxisDuration: 3)
-        barChartView.drawGridBackgroundEnabled = false
 
     }
     
@@ -210,44 +167,6 @@ class GraphViewController: UIViewController, ChartViewDelegate {
         print("Average Cost \(aveCost)")
     }
 }
-
-
-//MARK: Weeks Bottom Label Class for x-Axis labels
-public class WeekValueFormatter: NSObject, IAxisValueFormatter {
-
-    override init() {
-        super.init()
-    }
-
-    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-       
-        let week = ["Sun", "Mon", "Tue", "Wed","Thu", "Fri", "Sat"]
-        
-        for i in stocks.suffix(7) {
-
-            let strDate = i.tradeDate
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dateFormatter.dateFormat = "MM/dd/yyyy"
-            let date = dateFormatter.date(from: strDate)
-            _ = Calendar.current.component(.weekday, from: date!)
-      
-
-        }
-        //var val = week[Int(value)].suffix(7)
-        return week[Int(value)]
-    }
-    
-   
-}
-
-
-
-
-
-
-
-
 
 extension GraphViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

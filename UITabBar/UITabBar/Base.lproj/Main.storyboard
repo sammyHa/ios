@@ -349,7 +349,7 @@
                                     <outlet property="delegate" destination="veC-LF-HkZ" id="1ql-ti-9Ms"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIx-bP-HrU" customClass="BarChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIx-bP-HrU" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="225" width="428" height="310"/>
                                 <color key="backgroundColor" red="0.062745098039215685" green="0.22745098039215686" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -374,10 +374,10 @@
                     <tabBarItem key="tabBarItem" title="" image="chart-area" id="pdM-vQ-aBC"/>
                     <navigationItem key="navigationItem" id="547-TG-CeR"/>
                     <connections>
-                        <outlet property="barChartView" destination="zIx-bP-HrU" id="iLO-Ac-NVY"/>
                         <outlet property="currentBalancePercentage" destination="lj1-hf-7Tr" id="t4w-bF-CHC"/>
                         <outlet property="currentBalancetxt" destination="6MA-5J-fPS" id="qYY-es-P6L"/>
                         <outlet property="currentValue" destination="sUs-cm-lUX" id="yTb-S8-goG"/>
+                        <outlet property="lineChartView" destination="zIx-bP-HrU" id="iKg-eM-tch"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZS-bg-NyP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

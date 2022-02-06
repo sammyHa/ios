@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import SwiftUI
 
 class AddViewController: UIViewController, UITextFieldDelegate {
     
@@ -28,6 +29,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+
         setupTextFields()
         //addIconToTextField(uiTextField: tradeDate)
         addIconToTextField(uiTextField: tradeDate)
