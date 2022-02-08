@@ -75,9 +75,6 @@ class GraphViewController: UIViewController, ChartViewDelegate {
         xAxis.drawGridLinesEnabled = false
         
         lineChartView.animate(xAxisDuration: 1)
-       // lineChartView.drawGridBackgroundEnabled = false
-        
-        
     }
     
     
