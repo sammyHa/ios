@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 struct Comment {
-    let comentId: Int?
+    let comentId: String
     let user: User
     let comment: String
     
-    init(commentId: Int?, user: User, comment: String) {
+    init(commentId: String, user: User, comment: String) {
         self.comentId = commentId
         self.user = user
         self.comment = comment

@@ -64,6 +64,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }()
     
     
+    
+    
     private let questionTextview: UITextView = {
         
         var attributedTextview: NSMutableAttributedString?
@@ -104,8 +106,10 @@ class ItemCollectionViewCell: UICollectionViewCell {
         for q in questions {
             
             attributeText = NSMutableAttributedString(string: "\(String(describing: q.comments))", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-            print("user comment count: \(q.comments)")
+        
+            
         }
+     
        
         commentLbl.attributedText = attributeText
         return commentLbl
@@ -178,10 +182,11 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     
    private func setuLayout() {
+
        
        profileImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 22).isActive = true
        profileImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22).isActive = true
-       profileImage.widthAnchor.constraint(equalToConstant: 60) // not needed idk know why lol
+       //profileImage.widthAnchor.constraint(equalToConstant: 60).isActive = true // not needed idk know why lol
        profileImage.heightAnchor.constraint(equalToConstant: 60).isActive = true
        
        profileImage.layer.borderWidth = 1
@@ -229,16 +234,22 @@ class ItemCollectionViewCell: UICollectionViewCell {
         if ((gestureRecognizers.view as? UIImageView) != nil) {
             
             
+            
         }
     }
     
     //setup the data
     func setup(with q: Question){
         nameLabel.text = q.user.name
-        
         questionTextview.text = q.questionDescription
         attachment.image = q.attachments
         commentCount.text = String(q.comments.count)
+        
+        if q.isAnswered == true {
+            aprovedIcon.image = UIImage(named: "checkgreen")
+        }else {
+            aprovedIcon.image = UIImage(named: "checked")
+        }
         
     }
 }
