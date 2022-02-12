@@ -8,15 +8,16 @@
 import Foundation
 import UIKit
 
-struct Question {
+class Question {
     
     let questionId: String
-    let user: User
-    let questionDescription: String
-    let comments: [Comment]
-    let isAnswered: Bool
-    let askTimestamp: Date
-    let attachments: UIImage?
+    let question: String
+    
+
+    init(questionId: String, question: String) {
+        self.questionId = questionId
+        self.question = question
+    }
     
 }
 
@@ -26,61 +27,19 @@ let commentUUID = UUID().uuidString
 let userCreated = Date.now
 let commentCreated = Date.now
 
-var questions: [Question] = [
+var userArray: [User] = {
+    var sammy = User(userId: userUUID,
+                     name: "Samim",
+                     username: "@samim123",
+                     userCreationTimestamp: userCreated,
+                     question: "This is the question user asked from the community and should be answered within few seconds if not sooner")
+   
+    return [sammy]
     
+}()
 
+let questionArray: [Question] = {
+    var q1 = Question(questionId: questionUUID, question: "This isthe adlskfj;asdlkf j;alkdfj;alkdjf;alkdfj;alkjdf;alkjdf;adk")
     
-    Question(questionId: questionUUID,
-             user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated),
-             questionDescription: "This is the question description",
-             comments: [
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me.")],
-             isAnswered: false, askTimestamp: commentCreated, attachments: UIImage(named: "code")),
-    
-    Question(questionId: questionUUID,
-             user: User(userId: userUUID, name: "Samim", username: "@sammy_123", userCreationTimestamp: userCreated),
-             questionDescription: "This is the question descriptio This is the question description This is the question description This is the question description This is the question description",
-             comments: [
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me.")],
-             isAnswered: true, askTimestamp: commentCreated, attachments: UIImage(named: "code")),
-    
-    Question(questionId: questionUUID,
-             user: User(userId: userUUID, name: "Jess", username: "@sammy_123", userCreationTimestamp: userCreated),
-             questionDescription: "This is the question descriptio This is the question description This is the question description This is the question description This is the question description",
-             
-             comments: [
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me.")],
-             
-             isAnswered: false, askTimestamp: commentCreated, attachments: UIImage(named: "code")),
-    
-    Question(questionId: questionUUID,
-             user: User(userId: userUUID, name: "Alex", username: "@sammy_123", userCreationTimestamp: userCreated),
-             questionDescription: "This is the question descriptio This is the question description This is the question description This is the question description This is the question description",
-             
-             comments: [
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me.")],
-             
-             isAnswered: true, askTimestamp: commentCreated, attachments: UIImage(named: "code")),
-    
-    Question(questionId: questionUUID,
-             user: User(userId: userUUID, name: "Joe", username: "@sammy_123", userCreationTimestamp: userCreated),
-             questionDescription: "This is the question descriptio This is the question description This is the question description This is the question description This is the question description",
-             
-             comments: [
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me."),
-                Comment(commentId: commentUUID, user: User(userId: userUUID, name: "Nolan", username: "@nolan_123", userCreationTimestamp: userCreated), comment: "YEs this has worked for me.")],
-             
-             isAnswered: true, askTimestamp: commentCreated, attachments: UIImage(named: "code"))
-]
+    return [q1]
+}()

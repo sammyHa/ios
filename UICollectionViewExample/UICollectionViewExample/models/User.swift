@@ -12,8 +12,10 @@ struct User {
     
     let userId: String
     let name: String
-    let username: String?
+    let username: String
     let userCreationTimestamp: Date?
+    let question: String
+    
    
 }
 

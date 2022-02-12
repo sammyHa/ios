@@ -10,12 +10,8 @@ import UIKit
 
 struct Comment {
     let comentId: String
-    let user: User
+    let user: String
     let comment: String
     
-    init(commentId: String, user: User, comment: String) {
-        self.comentId = commentId
-        self.user = user
-        self.comment = comment
-    }
+    
 }
